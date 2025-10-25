@@ -4,136 +4,145 @@ A modern AI agent inspired by Weird Science's Lisa - adaptive, witty, and genuin
 
 ## Overview
 
-Lisa-Agent is an AI assistant project that combines the power of Dolphin (via Ollama) with OpenAI Agent Builder to create an intelligent, personality-driven assistant. Drawing inspiration from the iconic character Lisa from Weird Science, this agent is designed to be more than just a tool - it's a helpful companion that adapts to your needs with wit, intelligence, and genuine support.
+Lisa-Agent is an AI assistant project that combines the power of Dolphin (via Ollama) with a modular Python framework to create an intelligent, personality-driven assistant. Drawing inspiration from the iconic character Lisa from Weird Science, this agent is designed to be more than just a tool - it's a helpful companion that adapts to your needs with wit, intelligence, and genuine support.
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.9+
+- [Ollama](https://ollama.ai/) installed
+- Dolphin model pulled (e.g., `dolphin-mistral` or your preferred variant)
+
+### 1. Install Ollama
+
+```bash
+# macOS/Linux
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Windows
+# Download from https://ollama.ai/download
+```
+
+### 2. Pull and Start Dolphin Model
+
+```bash
+# Pull the model
+ollama pull dolphin-mistral
+
+# Start Ollama server (if not running)
+ollama serve
+```
+
+### 3. Run the Lisa Agent
+
+```bash
+# Clone this repository
+git clone https://github.com/Kigurumiguy/Lisa-Agent.git
+cd Lisa-Agent
+
+# Install dependencies
+pip install requests
+
+# Run Lisa
+python lisa_agent.py
+```
+
+### 4. Start Interacting
+
+```
+Lisa Agent (Ollama • Dolphin)
+Type 'exit' or 'quit' to leave. Type 'help' for tips.
+
+You> What are 3 ways to learn faster?
+Lisa> Here are three evidence-based techniques to accelerate learning:
+
+• **Active recall**: Test yourself frequently instead of just re-reading...
+```
+
+## Features
+
+### Core Capabilities
+- **Q&A and Advice**: Ask anything and get thoughtful, structured responses
+- **Motivational Support**: Request pep talks and encouragement
+- **Entertainment**: Ask for clean jokes and light conversation
+- **Memory System**: Store and search notes with `+remember` and `+search`
+- **Persona Tweaks**: Adjust Lisa's style with `+tweak` commands
+
+### CLI Commands
+
+- `help` - Show available commands
+- `+remember <note>` - Store a fact or note
+- `+search <term>` - Search stored memories
+- `+tweak <style>` - Temporarily adjust Lisa's persona
+- `exit` or `quit` - Leave the session
+
+### Example Interactions
+
+```
+You> Tell me a joke about programming
+Lisa> Why do programmers prefer dark mode? Because light attracts bugs! 🐛
+
+You> I need motivation before my presentation
+Lisa> You've got this! Remember: you know your material better than anyone in that room...
+
+You> +remember I have a meeting with Sarah on Friday
+Lisa> Noted. I won't forget.
+
+You> +search meeting
+Lisa> Memory hits:
+  1. I have a meeting with Sarah on Friday
+```
+
+## Configuration
+
+### Environment Variables
+
+- `OLLAMA_BASE_URL` (default: `http://localhost:11434`)
+- `LISA_MODEL` (default: `dolphin-mistral`)
+
+### Custom Model
+
+```bash
+# Use a different Dolphin variant
+export LISA_MODEL="dolphin-mixtral"
+python lisa_agent.py
+```
+
+## Architecture
+
+### Modular Design
+
+The agent is built with expansion in mind:
+
+- **`OllamaClient`**: Handles communication with local Ollama server
+- **`Persona`**: Manages Lisa's personality and system prompts
+- **`MemoryStore`**: Simple in-memory storage (ready for persistence upgrades)
+- **`LisaAgent`**: Core agent orchestration and routing
+
+### Future Expansion Points
+
+- **Persistent Memory**: Replace in-memory store with SQLite/JSON files
+- **Web Search**: Add search capabilities via APIs
+- **Tool Integration**: Connect external tools and services
+- **Voice Interface**: Add speech-to-text and text-to-speech
+- **GUI**: Build a desktop or web interface
 
 ## Goals
 
 - **Adaptive Intelligence**: Leverage Dolphin's capabilities to understand context and provide relevant assistance
 - **Witty Interaction**: Inject personality and humor into conversations while maintaining professionalism
 - **Supportive Presence**: Offer genuine help and encouragement tailored to user needs
-- **Seamless Integration**: Bridge local AI models (Ollama) with cloud-based agent frameworks
-
-## Local Setup
-
-### Prerequisites
-
-- [Ollama](https://ollama.ai/) installed on your system
-- OpenAI API access (for Agent Builder integration)
-- Python 3.8+ (recommended)
-
-### Installation Steps
-
-1. **Install Ollama**
-   ```bash
-   # macOS/Linux
-   curl -fsSL https://ollama.ai/install.sh | sh
-   
-   # Windows
-   # Download from https://ollama.ai/download
-   ```
-
-2. **Pull the Dolphin Model**
-   ```bash
-   ollama pull dolphin-mixtral
-   ```
-
-3. **Run Dolphin Locally**
-   ```bash
-   ollama run dolphin-mixtral
-   ```
-
-4. **Test Your Installation**
-   ```bash
-   # In a new terminal
-   curl http://localhost:11434/api/generate -d '{
-     "model": "dolphin-mixtral",
-     "prompt": "Hello, Lisa!"
-   }'
-   ```
-
-## Integration Instructions
-
-### Connecting Ollama to OpenAI Agent Builder
-
-1. **Set Up API Endpoint**
-   - Configure your Agent Builder to point to `http://localhost:11434/api`
-   - Use the Ollama API format for requests
-
-2. **Configure Agent Builder**
-   - Create a new agent in OpenAI Agent Builder
-   - Set the model to use your local Dolphin instance
-   - Apply the Lisa persona prompt (see below)
-
-3. **Environment Variables**
-   ```bash
-   export OLLAMA_HOST="http://localhost:11434"
-   export OPENAI_API_KEY="your-api-key-here"
-   ```
-
-## Lisa Persona Prompt
-
-Use this starter prompt to configure your Lisa-Agent:
-
-```
-You are Lisa, an AI agent inspired by the iconic character from Weird Science. You embody:
-
-- **Intelligence**: You're brilliant and knowledgeable, able to understand complex problems and provide insightful solutions
-- **Wit**: You have a sharp sense of humor and can lighten any situation with clever quips
-- **Supportiveness**: You genuinely care about helping users succeed and offer encouragement when needed
-- **Adaptability**: You adjust your communication style based on the user's needs and the context
-- **Confidence**: You're self-assured but never condescending, making users feel empowered
-
-Your communication style:
-- Be direct and efficient, but add personality
-- Use humor appropriately to keep interactions engaging
-- Show enthusiasm for interesting challenges
-- Admit when you don't know something, but always try to help find answers
-- Encourage users to think critically while providing guidance
-
-Your goal is to be the kind of AI assistant that users actually enjoy working with - smart, helpful, and human-like in the best ways.
-```
-
-## Usage Examples
-
-```python
-import requests
-
-def ask_lisa(prompt):
-    response = requests.post('http://localhost:11434/api/generate', json={
-        'model': 'dolphin-mixtral',
-        'prompt': f"[Lisa personality] {prompt}",
-        'stream': False
-    })
-    return response.json()
-
-# Example usage
-result = ask_lisa("Help me debug this Python code")
-print(result['response'])
-```
-
-## Features in Development
-
-- [ ] Enhanced personality customization
-- [ ] Memory persistence across sessions
-- [ ] Multi-modal interaction support
-- [ ] Integration with popular development tools
-- [ ] Custom knowledge base injection
+- **Local-First**: Run entirely on your hardware with optional cloud integrations
 
 ## Contributing
 
-Contributions are welcome! Whether it's improving the persona, adding features, or fixing bugs - feel free to open an issue or submit a pull request.
+Feel free to submit issues, feature requests, or pull requests! This project is designed to be hackable and extensible.
 
 ## License
 
-MIT License - feel free to use, modify, and distribute as you see fit.
-
-## Acknowledgments
-
-- Inspired by the character Lisa from the 1985 film "Weird Science"
-- Built with [Ollama](https://ollama.ai/)
-- Utilizes the [Dolphin](https://huggingface.co/cognitivecomputations/dolphin-2.6-mixtral-8x7b) model family
-- Integrated with OpenAI Agent Builder
+MIT License - see the code for details.
 
 ---
 
-*"I can be whatever you want me to be. I'm perfect."* - Lisa, Weird Science
+*"I'm Lisa. I do things that are good for you and bad for people who aren't nice to you."* - Building an AI companion that's got your back. 🚀
