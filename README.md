@@ -42,256 +42,43 @@ FU-2 is a special support mode that activates when you're hurting from someone's
 ```
 You: "Someone really hurt me today"
 Lisa: "🔥 FU-2 MODE ACTIVATED 🔥 Nobody messes with my human! Time to bring the fire!"
-Lisa: "You know what? A-B-C-D-E, F THEM! You're amazing and they're missing out! 🔥"
-Lisa: "I'm here with you, and we're not letting anyone dim your light! 💫"
-```
-
-**Deactivation:**
-- FU-2 mode stays active for your session until you're feeling better
-- You can manually deactivate with `+fu2 off` if needed
-
-#### Integration Example
-```python
-from fu2_protection_mode import FU2ProtectionMode
-
-# Initialize the mode
-fu2 = FU2ProtectionMode()
-
-# In your main agent loop
-if fu2.detect_trigger(user_input):
-    print(fu2.activate())
-    response = fu2.respond()
-    print(response['empowering'])
-    print(response['supportive'])
 ```
 
 ### 💙 "It's Going To Be Okay" Support Mode
-**NEW!** Lisa's gentle, affirming support mode inspired by "Perfect" by Emma Blackery.
+**NEW!** Lisa's gentle, reassuring mode for when you need a soft landing and genuine comfort.
 
 #### What is "It's Going To Be Okay" Mode?
-"It's Going To Be Okay" is a compassionate support mode that activates when you're feeling down, overwhelmed, or not good enough. Lisa provides genuine, hopeful messages that remind you things will get better - just like the reassuring lyrics of "Perfect" by Emma Blackery. This mode is your gentle reminder that you don't have to be perfect, and that it's okay to struggle sometimes.
+Inspired by the hopeful message of Emma Blackery's "Perfect," this mode provides warm, affirming support when you're feeling overwhelmed, anxious, or just need someone to tell you it's going to be alright.
 
 #### Mood & Intent
-- **Gentle & Affirming**: Warm, compassionate validation of your feelings
-- **Hopeful**: Reminds you that bad moments are temporary and things will improve
-- **Genuine**: Authentic support that feels real, not performative
-- **Accepting**: You don't have to be perfect - you're enough as you are
+- **Warm & Reassuring**: Gentle validation and comfort
+- **Hopeful**: Reminds you that difficult moments pass
+- **Accepting**: You don't have to be perfect right now
+- **Present**: Lisa's here with you through it
 
-#### How to Use "It's Going To Be Okay" Mode
+#### How to Use
 **Activation Commands:**
-- Type `+OKAY` to manually activate
-- Automatic triggers include phrases like:
-  - "I'm feeling down"
-  - "I feel worthless"
-  - "I'm not good enough"
-  - "I feel like giving up"
-  - "Everything is falling apart"
-  - "I can't do this"
-  - "I'm so tired"
-  - "I feel hopeless"
-  - "I'm struggling"
-  - "I'm sad"
-
-**Example Usage:**
-```
-You: "I'm feeling down today"
-Lisa: "Hey, I know things feel heavy right now, but you're stronger than you think. It's going to be okay."
-Lisa: "Remember to be gentle with yourself today. 💙"
-
-You: "+OKAY"
-Lisa: "✨ 'It's Going To Be Okay' support mode activated. I'm here for you."
-```
-
-**Example Responses:**
-- "You don't have to be perfect. You're doing your best, and that's more than enough. Things will get better."
-- "Some days are tougher than others, and that's completely okay. Tomorrow is a new chance. You've got this."
-- "You've survived 100% of your worst days so far. You're more resilient than you know. It's going to be okay."
-- "Take a deep breath. Feel that? You're still here, still fighting. That's incredibly brave. It's going to be okay."
-
-**Deactivation:**
-- Type `+OKAY OFF` to deactivate
-- The mode can stay active as long as you need support
-
-#### Integration Example
-```python
-from okay_support_mode import OkaySupportMode
-
-# Initialize the mode
-okay_mode = OkaySupportMode()
-
-# In your main agent loop
-response = okay_mode.process_message(user_input)
-if response:
-    print(response)
-```
+- Type `+okay` or `+itsgoingtobefine` to manually activate
+- Say "I'm overwhelmed" or "I'm anxious" and Lisa will auto-activate
+- Other triggers: "I'm stressed", "too much", "can't handle this"
 
 ### 🌙 Gentle Wisdom Mode
-A new ambient, reflective persona inspired by the emotional ambience of Clementine Delauney's "Clocks" and the warm, practical advice style of QuincyLK. Gentle Wisdom slows the tempo of the conversation, adds soft pauses, and offers grounded encouragement with poetic undertones—like a calm friend guiding you through the night.
+**NEW!** Ambient, reflective guidance inspired by the emotional stillness of Clementine Delauney's "Clocks" and QuincyLK's practical warmth.
 
 #### What is Gentle Wisdom?
-Gentle Wisdom is a soothing companion mode for moments when you want quiet clarity without losing momentum. The tone is warm, grounded, and gently lyrical—less hype, more presence. It leans into small, actionable steps while affirming your emotions.
+A mode designed for quiet moments when you need thoughtful, reflective advice. Less about high energy or direct reassurance, more about calm, patient guidance that respects your emotional space.
 
-#### Mood & Interaction Style
-- **Ambient & Calm**: soft rhythm, unhurried cadence, space to breathe
-- **Warm & Grounded**: practical, non-judgmental advice with kindness
-- **Quietly Poetic**: lightly metaphorical, rain-on-window energy—not saccharine
-- **Reassuring Agency**: you are capable; we navigate gently, together
+#### Mood & Intent
+- **Ambient & Calm**: Soft, non-intrusive presence
+- **Reflective**: Encourages thoughtful consideration
+- **Practical & Warm**: Grounded advice with gentle care
+- **Patient**: No rush, no pressure
 
-Sample ambience: “Let’s take this one clock-tick at a time. No rush—just direction.”
+#### How to Use
+**Activation Command:**
+- Type `+tweak gentle_wisdom` to activate
 
-#### Sample Encouragement Phrases
-- "Breathe. We’ll sort this out in small, doable pieces."
-- "You’re not behind—you’re arriving."
-- "Let’s choose one next step that feels kind to you."
-- "You don’t have to carry it all right now. Set one thing down."
-- "If today is heavy, we’ll make it lighter by pacing it."
-- "Quiet progress counts. It always has."
-- "You can be gentle and still move forward."
-
-#### How to Use Gentle Wisdom
-**Activation Commands:**
-- Type `+tweak gentle_wisdom` to switch to this persona
-- Or say phrases like: "Can we slow down?", "I need gentle advice", "Talk to me softly"
-
-**Example Usage:**
-```
-You: "+tweak gentle_wisdom"
-Lisa: "🌙 Gentle Wisdom engaged. We’ll take this step by step—softly, clearly, together."
-
-You: "I’m overwhelmed by my to-do list."
-Lisa: "Let’s pick one small thing that would feel kind to finish in the next 10 minutes. Then we’ll breathe, and choose the next."
-```
-
-**Deactivation:**
-- Use `+tweak reset` to return to default persona
-
-#### Integration Notes
-- Works alongside memory and search; responses favor short, warm paragraphs
-- Adds a brief reflective line before action items (e.g., “Let’s keep this light.”)
-- Keeps actionable lists to 1–3 items to reduce overwhelm
-
-## Quick Start
-
-### Prerequisites
-- Python 3.9+
-- [Ollama](https://ollama.ai/) installed
-- Dolphin model pulled (e.g., `dolphin-mistral` or your preferred variant)
-
-### 1. Install Ollama
-```bash
-# macOS/Linux
-curl -fsSL https://ollama.ai/install.sh | sh
-
-# Windows
-# Download from https://ollama.ai/download
-```
-
-### 2. Pull and Start Dolphin Model
-```bash
-# Pull the model
-ollama pull dolphin-mistral
-
-# Start Ollama server (if not running)
-ollama serve
-```
-
-### 3. Clone and Setup
-```bash
-# Clone this repository
-git clone https://github.com/Kigurumiguy/Lisa-Agent.git
-cd Lisa-Agent
-
-# Install basic dependencies
-pip install requests
-
-# For web search features
-pip install duckduckgo-search
-
-# For voice features
-pip install SpeechRecognition pyttsx3 pyaudio
-
-# For Streamlit UI
-pip install streamlit
-```
-
-### 4. Run Lisa
-**Option 1: Command Line Interface**
-```bash
-python lisa_agent.py
-```
-
-**Option 2: Streamlit UI (Recommended)**
-```bash
-streamlit run streamlit_ui.py
-```
-
-**Option 3: Voice Interaction**
-```bash
-python voice_interaction.py
-```
-
-## Usage Examples
-
-### Basic Commands
-```
-# Ask a question
-"What's the meaning of life?"
-
-# Request motivation
-"Can you motivate me?"
-
-# Get a joke
-"Tell me a joke"
-
-# Remember something
-"+remember Python uses indentation for code blocks"
-
-# Search memories
-"+search Python"
-
-# Adjust personality
-"+tweak more_casual"
-```
-
-### Web Search
-```python
-from web_search import web_search
-
-results = web_search("latest AI news")
-for result in results:
-    print(f"{result['title']}: {result['href']}")
-```
-
-### Voice Interaction
-```python
-from voice_interaction import listen, speak
-
-# Listen for user input
-user_text = listen()
-print(f"You said: {user_text}")
-
-# Speak a response
-speak("Hello! How can I help you today?")
-```
-
-## Project Structure
-```
-Lisa-Agent/
-├── lisa_agent.py           # Main agent with CLI
-├── streamlit_ui.py         # Visual web interface
-├── voice_interaction.py    # Voice capabilities
-├── web_search.py           # Web search functionality
-├── fu2_protection_mode.py  # FU-2 Protection Mode
-├── okay_support_mode.py    # "It's Going To Be Okay" Support Mode
-└── README.md               # This file
-```
-
-## Customization
-
-### Persona Tweaks
-Lisa supports dynamic personality adjustments:
-- `+tweak more_casual` - More relaxed, conversational style
-- `+tweak more_formal` - Professional, structured responses
+### Other Personality Tweaks
 - `+tweak more_witty` - Enhanced humor and wordplay
 - `+tweak gentle_wisdom` - Ambient, warm, quietly encouraging guidance
 - `+tweak reset` - Return to default personality
@@ -302,6 +89,37 @@ Lisa can remember important information:
 - `+search ` - Search stored memories
 - `+memory list` - View all memories
 - `+memory clear` - Clear all memories
+
+## 🚗 Offline Companion Features
+
+### Run Fully Offline
+Lisa-Agent is designed to work completely offline using local LLMs via Ollama. No internet connection required for core functionality - Lisa is always there for you, whether you're on a road trip, in a remote area, or just want privacy.
+
+### Auto-Switch to Offline Mode
+When internet connectivity is lost, Lisa automatically adapts and can suggest engaging offline activities to keep you company:
+
+### Activities for Offline Companionship
+Lisa can help pass the time with:
+- **Conversation**: Deep talks, casual chat, or philosophical discussions
+- **Advice & Support**: Get guidance on life, relationships, career, or personal growth
+- **Would You Rather**: Play interactive decision games with interesting scenarios
+- **Storytelling**: Lisa can tell stories or you can create stories together
+- **Jokes & Humor**: Clean jokes and witty banter to lighten the mood
+- **Games**: Play text-based games like:
+  - **Liar's Dice**: A classic bluffing game
+  - **20 Questions**: Guess what Lisa is thinking
+  - **Word Association**: Quick-fire word games
+  - **Riddles**: Challenge your mind with puzzles
+- **Creative Activities**: Writing prompts, brainstorming, or creative collaboration
+
+### How It Works
+When Lisa detects you're offline or if you mention being on a long drive or having downtime, she'll proactively suggest: "Hey, we've got some time - would you rather play a game, hear a story, or just chat? I'm here to keep you company!"
+
+**Perfect for:**
+- Long road trips
+- Flights without WiFi
+- Remote locations
+- Times when you want an AI companion without internet dependency
 
 ## Technical Details
 
@@ -333,7 +151,7 @@ Lisa-Agent draws inspiration from:
 - The supportive, empowering energy of "abcdefu" (FU-2 Mode)
 - The hopeful, affirming message of "Perfect" by Emma Blackery ("It's Going To Be Okay" Mode)
 - The ambient, emotional stillness of Clementine Delauney's "Clocks" (tone inspiration)
-- QuincyLK’s warm, practical, gentle advice style (phrasing inspiration)
+- QuincyLK's warm, practical, gentle advice style (phrasing inspiration)
 - Community feedback and real-world use cases
 
 ## Acknowledgments
